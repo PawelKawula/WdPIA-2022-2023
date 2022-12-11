@@ -1,0 +1,58 @@
+
+.payment_button {
+    width: auto;
+}
+
+#payments_div input{
+    padding: 0;
+    margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    visibility: hidden;
+}
+#payments_div label{
+    padding: 2em;
+}
+
+.drinkard_cc, .cc_selector input:active +.drinkard_cc{opacity: .9;}
+
+#payments_div input[type="radio"]:checked+label {
+    -webkit-filter: brightness(1.5) grayscale(.2) opacity(.9);
+    -moz-filter: brightness(1.2) grayscale(.2) opacity(.9);
+    filter: brightness(1.2) grayscale(.2) opacity(.9);
+}
+
+input:checked +.drinkcard_cc, .cc_selector input:checked +.drinkcard_cc{
+    -webkit-filter: none;
+    -moz-filter: none;
+    filter: none;
+}
+
+.drinkcard_cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+    -moz-transition: all 100ms ease-in;
+    transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+    -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+    filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard_cc:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+.disabled_payment:hover {
+    -webkit-filter: none;
+    -moz-filter: none;
+    filter: none;
+}
+#payment_details_div input {
+    appearance: initial;
+    visibility: visible;
+}

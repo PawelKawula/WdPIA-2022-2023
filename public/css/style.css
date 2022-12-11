@@ -5,73 +5,103 @@
 
 html, body {
   font-family: "Lato", sans-serif;
-  background: #1E1E1E;
   height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #3B4252;
 }
 
-.sidenav {
-  height: 100%;
-  width: 0;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #326881;
-  overflow-x: hidden;
-  transition: 0.3s;
-  white-space: nowrap;
-  text-align: center;
-  font-size: 1.5em;
+a {
+  color: inherit;
+}
+
+.login_and_basket_div {
   display: flex;
-  align-content: center;
+  align-items: center;
+  font-size: 2em;
+}
+
+.main {
+  transition: margin-left .5s;
+  padding: 1em;
+  height: calc(100% - 12em);
+  width: 100%;
+  display: flex;
   flex-flow: column;
+}
+
+form div {
+  display: flex;
+  flex-flow: column;
+  color: #D9D9D9;
+}
+
+.security_main {
+  height: auto;
+  flex-flow: row;
+  justify-content: center;
   align-items: center;
 }
 
-.hamburger_animate {
-    transform: rotate(90deg);
-    animation-duration: 1s;
-}
-
-.sidenav a {
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  text-decoration: none;
-  font-size: 1.5em;
-  color: #000000
-  display: inline-block;
-  transition: 0.3s;
-  border: solid 2px;
-  width: calc(100% - 1em);
-}
-.sidenav a:visited{
-  color: #000000
-}
-
-.sidenav a:last-child {
-  border-bottom-width: 4px
-}
-
-.sidenav a:first-child {
-  border-top-width: 4px;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-#content {
-    display: flex;
-    height: 100%;
-}
-
-#main {
-  transition: margin-left .5s;
-  padding: 1em;
-  height: 100%;
+#order_main {
+  color: black;
   display: flex;
-  overflow: clip;
+  background-color: #326881;
+  margin: 2em;
+}
+
+#cart_main {
+  flex-flow: column;
+  justify-content: center;
+}
+
+#name_div {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  width: 94%;
+}
+
+#name_div div {
+  margin: 0 1em;
+}
+
+.input_div {
+  display: flex;
+  flex-flow: column;
+  font-size: 1.5em;
+  width: 90%;
+  margin: 0 1em;
+}
+
+.prompt {
+  background-color: #D9D9D9;
+  height: 10em;
+  width: 10em;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  margin-right: 2em;
+}
+
+.security_box {
+  background-color: #326881;
+  height: 45em;
+  width: 30em;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: space-evenly;
+}
+
+.security_box form{
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: column;
+  height: 100%;
 }
 
 #hamburger {
@@ -83,7 +113,7 @@ html, body {
 
 #hamburger_div {
     width: var(--hamburger-width);
-    min-width: 100px;
+    min-width: 5em;
     align-items: center;
 }
 
@@ -92,12 +122,10 @@ html, body {
   z-index: 1;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   width: 100%;
 }
-#bar div:last-child{
-  align-self: flex-end;
-}
+
 
 #bar form {
     display: flex;
@@ -105,6 +133,19 @@ html, body {
     justify-content: space-between;
     height: 100%;
     border: solid 2px;
+}
+
+form input {
+  background-color: #D9D9D9;
+  padding: 0.5em 0;
+  font-size: 1.5em;
+}
+
+form button {
+  padding: 1em;
+  margin-left: 0.7em;
+  align-self: flex-end;
+  font-size: 2em;
 }
 
 #bar input[type="text"] {
@@ -123,19 +164,119 @@ html, body {
     background-color: transparent;
     border: 0;
 }
+#items{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .store_item {
+  display: block;
   background-color: #326881;
-  font-color: #D9D9D9;
-  height: 20em;
-  width: 20em;
+  color: #D9D9D9;
+  height: 11em;
+  width: 11em;
   overflow: hidden;
   display: flex;
   flex-flow: column;
+  align-items: center;
+  padding-bottom: 1em;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  padding-bottom: 4em;
 }
 
-.store_desc p{
-  display: inline-block;
+.buy_item {
+  display: block;
+  background-color: #326881;
+  color: #D9D9D9;
+  height: 11em;
+  width: 11em;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-size: 1.5em;
+  margin-bottom: 1em;
 }
+
+.item_quantity {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.items_quantity_block {
+  display: flex;
+  flex-flow: row;
+}
+
+.item_quantity_leaf {
+  padding: 0.5em;
+  font-size: 0.6em;
+}
+
+.item_quantity_gui {
+  display: flex;
+  flex-flow: row;
+  padding: 0.2em;
+}
+
+.item_plus{
+  background-color: green;
+}
+
+.item_digits {
+  background-color: #D9D9D9;
+  color: black;
+}
+
+.item_minus{
+  background-color: red;
+}
+
+.cart_item {
+  width: 90%;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.item_description {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.item_description div {
+  width: 100%;
+  text-align: center;
+}
+
+.item_description div button {
+  width: 100%;
+}
+
+#items_nav {
+  background-color: #326881;
+  color: #D9D9D9;
+  font-size: 1.5em;
+  align-self: center;
+  margin-bottom: auto;
+  margin-top: auto;
+  width: 40%;
+  padding: 1em;
+  text-align: center;
+}
+
+.store_desc{
+  width: 100%;
+}
+
+#content {display: flex; }
 
 @media screen and (max-width: 450px) {
   :root {
@@ -143,6 +284,68 @@ html, body {
   }
   #bar {flex-flow: column;}
   .sidenav a {font-size: 1.2em;}
-  .sidenav {width: 100%}
   #bar input[type="text"] {font-size: 1em; }
+  .security_main{flex-flow: column; margin: 0;}
+  .main{flex-flow: column; margin: 0; padding: 0;}
+  .prompt {width: 100%; margin: 0;}
+  #items {padding: 0;}
+  #content {flex-flow: column;}
+  #search_div { width: 100%; }
+}
+
+#search_div {display: none;}
+
+.pagination_container {
+  display: flex;
+  align-items: center;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+  justify-content: center;
+  background-color: #326881;
+}
+
+.item_image {
+  width: 100%;
+  height: 100%;
+}
+.item_image_div {
+  width: 100%;
+  height: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.no_valid {
+  border: 3px solid red;
+  box-shadow: 0 0 0.2em red;
+  outline: none;
+}
+
+.notify_badge {
+  position: relative;
+  left: 20px;
+  top: 10px;
+  max-width: 20%;
+  background:red;
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  color:white;
+  padding:5px 10px;
+}
+
+#cart_sum_up {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sum_basket_div {
+  background: #0085b6;
+  padding: 1em;
+  width: 20%;
+  height: 100%;
 }
