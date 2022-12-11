@@ -1,0 +1,148 @@
+:root{
+    --hamburger-width: 25em;
+    --sidebar-width: calc(var(--hamburger-width) - 6em);
+}
+
+html, body {
+  font-family: "Lato", sans-serif;
+  background: #1E1E1E;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #326881;
+  overflow-x: hidden;
+  transition: 0.3s;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 1.5em;
+  display: flex;
+  align-content: center;
+  flex-flow: column;
+  align-items: center;
+}
+
+.hamburger_animate {
+    transform: rotate(90deg);
+    animation-duration: 1s;
+}
+
+.sidenav a {
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #000000
+  display: inline-block;
+  transition: 0.3s;
+  border: solid 2px;
+  width: calc(100% - 1em);
+}
+.sidenav a:visited{
+  color: #000000
+}
+
+.sidenav a:last-child {
+  border-bottom-width: 4px
+}
+
+.sidenav a:first-child {
+  border-top-width: 4px;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+#content {
+    display: flex;
+    height: 100%;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 1em;
+  height: 100%;
+  display: flex;
+  overflow: clip;
+}
+
+#hamburger {
+    transition: 0.4s;
+    margin-left: auto;
+    display: block;
+    margin-right: auto;
+}
+
+#hamburger_div {
+    width: var(--hamburger-width);
+    min-width: 100px;
+    align-items: center;
+}
+
+#bar {
+  background-color: #326881;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  width: 100%;
+}
+#bar div:last-child{
+  align-self: flex-end;
+}
+
+#bar form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    border: solid 2px;
+}
+
+#bar input[type="text"] {
+    height: 100%;
+    font-size: 2em;
+}
+#bar input[type="text"]:focus {
+    outline: 0;
+}
+#bar form input {
+    height: 100%;
+    background-color: transparent;
+    border: 0;
+}
+#bar button {
+    background-color: transparent;
+    border: 0;
+}
+.store_item {
+  background-color: #326881;
+  font-color: #D9D9D9;
+  height: 20em;
+  width: 20em;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+}
+
+.store_desc p{
+  display: inline-block;
+}
+
+@media screen and (max-width: 450px) {
+  :root {
+    --hamburger-width: 200%;
+  }
+  #bar {flex-flow: column;}
+  .sidenav a {font-size: 1.2em;}
+  .sidenav {width: 100%}
+  #bar input[type="text"] {font-size: 1em; }
+}
