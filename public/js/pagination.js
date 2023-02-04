@@ -1,29 +1,26 @@
 import {find_get_parameter} from './scripts.js';
 import {add_item_listener} from './items.js'
 
-const pagination_numbers = document.getElementById("pagination_numbers");
-const paginated_list = document.getElementById("paginated_list");
-const list_items = document.getElementById("items");
-const next_button = document.getElementById("next_button");
+const pagination_numbers = document.querySelector(".pagination");
+const list_items = document.getElementById("items_content");
 const prev_button = document.getElementById("prev_button");
-const pagination_limit = 5;
-const search_bar = document.getElementById("search")
+const next_button = document.getElementById("next_button");
+const pagination_limit = 4;
 
 let page_count = 1;
 localStorage.setItem("current_page", 1);
 localStorage.setItem("basket", JSON.stringify(new Map()));
 
 function create_item(item) {
-  const template = document.querySelector("#item_template");
+  const template = document.querySelector("#new_template");
   const clone = template.content.cloneNode(true);
   const image = clone.querySelector("img");
   image.src = `public/img/${item.name}.jpeg`;
-  const title = clone.querySelector("button");
+  const title = clone.querySelector(".card-title");
   title.innerHTML = item.name;
-  const price = clone.querySelector(".price");
+  const price = clone.querySelector(".card-footer");
   price.innerHTML = item.price;
-  title.addEventListener("click", add_item_listener, false);
-
+  add_item_listener(clone);
   list_items.appendChild(clone);
 }
 
@@ -64,45 +61,38 @@ function get_items() {
         body: JSON.stringify({"name": name, "category": category, "start": (current_page - 1) * pagination_limit, "interval": pagination_limit})
       }
   ).then(async function (resp) {
-        
         var json = await resp.json();
-        
-        // 
         return json;
       }
   ).
   then(function (items) {
-    // 
     populate(items);
   });
 }
 
 
 async function get_page_count() {
-  // if (localStorage.getItem("category").length != 0)
-  //   return get_page_count_for_all();
   var items_count = await get_items_count()
-  // 
   var x = Math.ceil(await get_items_count() / pagination_limit);
-  // 
   page_count = x;
   return x;
 }
 let current_page;
 
 const append_page_number = (index) => {
-  const page_number = document.createElement("button");
-  page_number.className = "pagination_number";
-  page_number.innerHTML = index;
-  page_number.setAttribute("page_index", index);
-  pagination_numbers.appendChild(page_number);
+  const li = document.createElement("li");
+  const button = document.createElement("button")
+  li.appendChild(button);
+  li.className = "page-item";
+  button.className = "page-link";
+  button.classList.add("pagination_number")
+  button.innerHTML = index;
+  button.setAttribute("page_index", index);
+  pagination_numbers.insertBefore(li, next_button);
 };
 const get_pagination_numbers = async () => {
-  // 
   var max = await get_page_count();
-  // 
   for (let i = 1; i <= max; i++) {
-    // 
     append_page_number(i);
   }
 };
@@ -110,21 +100,20 @@ const get_pagination_numbers = async () => {
 const disable_button = (button) => {
   button.classList.add("disabled");
   button.setAttribute("disabled", true);
+  button.querySelector("button").setAttribute("disabled", true);
 };
 const enable_button = (button) => {
   button.classList.remove("disabled");
   button.removeAttribute("disabled");
 };
 const handle_page_buttons_status = () => {
-  if (current_page === 1) {
-    disable_button(prev_button);
-  } else {
+  disable_button(prev_button);
+  disable_button(next_button);
+  if (current_page !== 1) {
     enable_button(prev_button);
   }
   
-  if (page_count === current_page) {
-    disable_button(next_button);
-  } else {
+  if (page_count !== current_page) {
     enable_button(next_button);
   }
 };
@@ -139,7 +128,6 @@ window.addEventListener("load", async () => {
   next_button.addEventListener("click", () => {
     set_current_page(current_page + 1);
   });
-
 
   document.querySelectorAll(".pagination_number").forEach((button) => {
     const page_index = Number(button.getAttribute("page_index"));
@@ -157,8 +145,7 @@ const set_current_page = (page_num) => {
   handle_active_page_number()
   handle_page_buttons_status()
 
-  const prev_range = (page_num - 1) * pagination_limit;
-  const curr_range = page_num * pagination_limit;
+  console.log("click")
   list_items.innerHTML = "";
   populate(get_items());
 };

@@ -85,7 +85,7 @@ class SecurityController extends AppController {
     public function admin() {
         session_start();
         if (!isset($_SESSION["logged_in"]) || $_SESSION["name"] != "admin") {
-            $this->redirect_to("logout");
+            return $this->redirect_to("logout");
         }
         $categories = $this->items_repository->get_categories();
         if (!$this->is_post() || isset($_POST["email"]))
@@ -99,6 +99,8 @@ class SecurityController extends AppController {
             $this->render('admin', ["categories" => $categories, "messages" => ["Nie istnieje taka kategoria! Dodawanie nieudane"]]);
         $quantity = intval($_POST["quantity"]);
         $name = trim($_POST["name"]);
+        if (strlen($name) == 0)
+            return $this->render('admin', ["categories" => $categories, "messages" => ["Nazwa nie może być pusta!"]]);
         $price = floatval($_POST["price"]);
         $desc = $_POST["desc"];
         if (!$this->validate_uploaded_file($_FILES["file"]))

@@ -1,7 +1,7 @@
-const form = document.getElementById("register_form")
+const form = document.getElementById("registerForm")
 const email_input = form.querySelector('input[name="email"]');
 const passwd_input = form.querySelector('input[name="passwd"]');
-const c_passwd_input = form.querySelector('input[name="c_passwd"]');
+const c_passwd_input = form.querySelector('input[name="cPasswd"]');
 const submit_button = form.querySelector("button");
 
 function is_email(email) {

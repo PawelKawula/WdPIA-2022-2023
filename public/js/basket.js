@@ -121,5 +121,6 @@ if (a_logout != null)
     a_logout.addEventListener("click", clear_cart, false);
 
 export function display_cart() {
-    document.getElementById('basket_count').innerHTML = shopping_cart.get_distinct_item_count();
+    console.log(shopping_cart.get_distinct_item_count());
+    document.getElementById('basket_count_span').innerHTML = shopping_cart.get_distinct_item_count();
 }

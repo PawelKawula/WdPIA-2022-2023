@@ -2,6 +2,7 @@ import {shopping_cart, display_cart} from "./basket.js";
 
 const payment_form = document.getElementById("payment_form");
 const payment_button = payment_form.querySelector("button")
+payment_button.classList.add("btn", "btn-primary" , "col-3");
 const payment_inputs = payment_form.querySelectorAll("label")
 const payment_details = document.getElementById("payment_details_div")
 const payment_methods = payment_form.querySelectorAll("input[name='payment_method']")
@@ -23,6 +24,9 @@ function display_payment_option(payment_option) {
             break;
         case 'blik':
             display_blik_option();
+            break;
+        default:
+            payment_button.disabled = true;
     }
 }
 
@@ -53,11 +57,18 @@ function display_blik_option() {
 
 function add_payment_detail_input(display, name, validator) {
     let div = document.createElement("div");
-    div.innerHTML = display
+    div.classList.add("form-floating", "mb-3");
     let input = document.createElement("input");
+    let label = document.createElement("label");
+    label.innerHTML = name;
+    label.setAttribute("for", name);
+    input.classList.add("floatingInput", "form-control");
     input.setAttribute("name", name);
+    input.setAttribute("id", name);
+    input.setAttribute("placeholder", name)
     input.addEventListener('keyup', validator);
     div.appendChild(input);
+    div.appendChild(label);
     payment_details.appendChild(div);
     return input;
 }

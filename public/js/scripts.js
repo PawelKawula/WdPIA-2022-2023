@@ -1,3 +1,4 @@
+const modal = new bootstrap.Modal("#staticBackdrop", {});
 export function find_get_parameter(parameter_name) {
   var result = null,
       tmp = [];
@@ -11,3 +12,6 @@ export function find_get_parameter(parameter_name) {
   return result;
 }
 
+console.log(show_modal);
+if (show_modal)
+    modal.show();
