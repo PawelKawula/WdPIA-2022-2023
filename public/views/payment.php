@@ -13,10 +13,10 @@
     <?php include 'navigation.php'?>
     <div class="card mb-3 col-8 mx-auto my-5 rounded-5">
       <div class="row g-0">
-        <div class="bg-info d-flex align-items-center col-md-4 text-center">
+        <div class="d-flex align-items-center col-md-4 text-center justify-content-center rounded-start">
           <h4 class="card-title">Płatność</h4>
         </div>
-        <div class="col-md-8 bg-secondary">
+        <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">Wybór metody</h5>
             <form action="payment" method="POST" id="payment_form">

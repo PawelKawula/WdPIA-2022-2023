@@ -1,14 +1,13 @@
-<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js" defer></script>
 <script defer>function set_category(cat) {localStorage.setItem("category", cat)}</script>
 <div class="navbar navbar-expand-md navbar-dark bg-dark">
-  <nav class="container-fluid collapse navbar-collapse d-flex" style="min-height: 30px;">
-    <?php if (isset($_SESSION) && count($_SESSION) && $_SESSION !== "admin")
+  <nav class="container-fluid d-flex" style="min-height: 30px;">
+    <?php if (isset($_SESSION) && count($_SESSION) && $_SESSION != "admin")
       echo '
     <button class="navbar-toggler d-block" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" >
       <span class="navbar-toggler-icon"></span>
     </button>';
     ?>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopContent" aria-controls="navbarTopContent" onclick="setTimeout(function() {document.getElementById('navbarTopContent').classList.remove('show')}; console.log('xd');">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopContent" aria-controls="navbarTopContent">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse align-self-center justify-content-end mt-2 mt-md-0" id="navbarTopContent">
